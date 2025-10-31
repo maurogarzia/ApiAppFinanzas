@@ -1,7 +1,8 @@
-import { IMovents } from "@/types/IMovents";
+import { IMovements } from "@/types/IMovements";
+import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
-export const moventSchema = new Schema<IMovents>({
+const movementsSchema = new Schema<IMovements>({
     date: {
         type: String,
         required: true
@@ -30,3 +31,5 @@ export const moventSchema = new Schema<IMovents>({
         }
     }
 })
+
+export const Movement = mongoose.model<IMovements>("Movement", movementsSchema)
