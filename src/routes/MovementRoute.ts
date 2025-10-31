@@ -10,3 +10,4 @@ route.post('/', MovementController.create)
 route.put('/:id', MovementController.update)
 route.delete('/:id', MovementController.delete)
 
+export default route

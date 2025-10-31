@@ -9,3 +9,5 @@ route.get('/:id', UsersControllers.getById)
 route.post('/', UsersControllers.create)
 route.put('/:id', UsersControllers.update)
 route.delete('/:id', UsersControllers.delete)
+
+export default route
