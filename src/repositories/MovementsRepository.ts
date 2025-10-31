@@ -23,11 +23,3 @@ export class MoventsRepository {
         await Movement.findByIdAndDelete(id)
     }
 }
-
-
-
-// CreateMovement
-
-// UpdateMovement
-
-// DeleteMovement
