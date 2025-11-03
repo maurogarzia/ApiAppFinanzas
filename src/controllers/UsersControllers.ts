@@ -18,14 +18,6 @@ export class UsersControllers {
         }
     }
 
-    static async create(req: Request, res: Response){
-        try {
-            const data = await usersService.create(req.body)
-            res.status(201).json(data)
-        } catch (error:any) {
-            res.status(400).json({message : error.message})
-        }
-    }
 
     static async update(req: Request, res: Response){
         try {

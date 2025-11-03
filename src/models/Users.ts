@@ -8,12 +8,30 @@ const usersSchema = new Schema<IUsers>({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
-        required: true
-    }
+        select: false
+    },
+    googleId: {
+        type: String, 
+        unique: true,
+        sparse: true
+    },
+    avatar: {
+        type: String
+    },
+    provider: {
+        type: String,
+        enum: ['local', 'google'],
+        default: 'local'
+    },
+    movements: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Movement'
+    }]
 },{
     timestamps: true,
     toJSON: {

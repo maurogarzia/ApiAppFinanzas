@@ -3,6 +3,7 @@ import app from "./server/server";
 import mongoose from "mongoose";
 import movementsRoutes from '@routes/MovementRoute'
 import usersRoutes from '@routes/UsersRoute'
+import authRoutes from '@routes/AuthRouter'
 
 dotenv.config()
 
@@ -15,6 +16,7 @@ mongoose.connect(process.env.MONGO_URL!)
     
 })
 
+app.use('/auth', authRoutes)
 app.use('/movements', movementsRoutes)
 app.use('/users', usersRoutes)
 

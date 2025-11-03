@@ -10,6 +10,14 @@ export class UserRepository{
         return User.findById(id)
     }
 
+    async findByEmail(email: string) : Promise<IUsers | null>{
+        return User.findOne({email}).select('+password')
+    }
+
+    async findByGoogleId(googleId: string): Promise<IUsers | null>{
+        return User.findOne({googleId})
+    }
+
     async create(data: IUsers): Promise<IUsers>{
         const newUser = new User(data)
         return newUser.save()
