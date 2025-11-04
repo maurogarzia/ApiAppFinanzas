@@ -19,6 +19,36 @@ export class MovementController {
         }
     }
 
+    static async getByType(req: Request, res: Response) {
+        try {
+            const data = await movementsService.getByType(req.params.id, req.params.type)
+            res.status(200).json(data)
+        } catch (error: any) {
+            const status = error.message.includes('no encontrado') ? 404 : 400
+            res.status(status).json({message : error.message})
+        }
+    }
+
+    static async getByMoreAncent (req: Request, res: Response) {
+        try {
+            const data = await movementsService.getMoreAncent(req.params.id)
+            res.status(200).json(data)
+        } catch (error: any) {
+            const status = error.message.includes('no encontrado') ? 404 : 400
+            res.status(status).json({message: error.message})
+        }
+    }
+
+    static async getByMoreRecent(req: Request, res: Response) {
+        try {
+            const data = await movementsService.getMoreRecent(req.params.id)
+            res.status(200).json(data)
+        } catch (error: any) {
+            const status = error.message.includes('no encontrado') ? 404 : 400
+            res.status(status).json({message: error.message})
+        }
+    }
+
     static async create(req: Request, res: Response){
         try {
             const newMovements = await movementsService.addMovement(req.body)
