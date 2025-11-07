@@ -1,13 +1,13 @@
 import { User } from "@/models/Users";
 import { UserRepository } from "@/repositories/UserRepository";
-import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import passport from "passport";
 
 //-------------------------------------------------------------------------------------------------------------------
 // Este archivo configura la estrategia de OAuth2 con google
-// Cuando Google devuelve el perfil del usuario busca en la bd (via userRepository) si ya exixste, sino lo crea
+// Cuando Google devuelve el perfil del usuario busca en la bd (via userRepository) si ya existe, sino lo crea
 // serializableUser / desSerializableUser se usa para manejo de sesiones
-
+//-------------------------------------------------------------------------------------------------------------------
 
 
 const userRespository = new UserRepository()

@@ -7,6 +7,9 @@ import authRoutes from '@routes/AuthRouter'
 
 dotenv.config()
 
+import './config/passport'
+
+
 mongoose.connect(process.env.MONGO_URL!)   
 .then(() => {
     console.log('Conectado');
@@ -16,9 +19,9 @@ mongoose.connect(process.env.MONGO_URL!)
     
 })
 
-app.use('appFinance/auth', authRoutes)
-app.use('appFinance/movements', movementsRoutes)
-app.use('appFinance/users', usersRoutes)
+app.use('/appFinance/auth', authRoutes)
+app.use('/appFinance/movements', movementsRoutes)
+app.use('/appFinance/users', usersRoutes)
 
 const port = process.env.PORT || 4000
 
