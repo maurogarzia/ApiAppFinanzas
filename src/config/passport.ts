@@ -3,6 +3,13 @@ import { UserRepository } from "@/repositories/UserRepository";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 
+//-------------------------------------------------------------------------------------------------------------------
+// Este archivo configura la estrategia de OAuth2 con google
+// Cuando Google devuelve el perfil del usuario busca en la bd (via userRepository) si ya exixste, sino lo crea
+// serializableUser / desSerializableUser se usa para manejo de sesiones
+
+
+
 const userRespository = new UserRepository()
 
 passport.use(
@@ -10,11 +17,11 @@ passport.use(
         {
             clientID: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-            callbackURL: process.env.GOOGLE_CALBACK_URL!,
+            callbackURL: process.env.GOOGLE_CALLBACK_URL!,
         },
         async (_accessToken, _refreshToken, profile, done) => {
             try {
-                const existingUser = await userRespository.findByGoogleId(profile.id)
+                let existingUser = await userRespository.findByGoogleId(profile.id)
                 if (existingUser) return done(null, existingUser)
 
                 const newUser = await User.create({

@@ -16,9 +16,9 @@ mongoose.connect(process.env.MONGO_URL!)
     
 })
 
-app.use('/auth', authRoutes)
-app.use('/movements', movementsRoutes)
-app.use('/users', usersRoutes)
+app.use('appFinance/auth', authRoutes)
+app.use('appFinance/movements', movementsRoutes)
+app.use('appFinance/users', usersRoutes)
 
 const port = process.env.PORT || 4000
 

@@ -6,7 +6,6 @@ export interface IUsers extends Document{
     id?: string,
     fullName: string,
     email: string,
-    password: string,
     googleId: string,
     avatar: string
     provider: 'local' | 'google',

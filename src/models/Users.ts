@@ -11,10 +11,6 @@ const usersSchema = new Schema<IUsers>({
         required: true,
         unique: true
     },
-    password: {
-        type: String,
-        select: false
-    },
     googleId: {
         type: String, 
         unique: true,
