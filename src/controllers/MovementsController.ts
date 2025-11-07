@@ -51,7 +51,8 @@ export class MovementController {
 
     static async create(req: Request, res: Response){
         try {
-            const newMovements = await movementsService.addMovement(req.body)
+            const {id: userId} = req.params
+            const newMovements = await movementsService.addMovement(userId, req.body)
             
             res.status(201).json(newMovements)
         } catch (error : any) {

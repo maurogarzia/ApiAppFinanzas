@@ -1,6 +1,8 @@
 import { User } from "@/models/Users";
 import { IUsers } from "@/types/IUsers";
 
+import { Types } from "mongoose";
+
 export class UserRepository{
     async findAll(): Promise<IUsers[]>{
         return User.find()
@@ -25,6 +27,12 @@ export class UserRepository{
 
     async update(data: IUsers, id: string) : Promise<IUsers | null>{
         return User.findByIdAndUpdate(id, data, {new: true})
+    }
+
+    async addMoventToUSer(userId : string, movementId: Types.ObjectId){
+        await User.findByIdAndUpdate(userId, {
+            $push: {movements: movementId}
+        })
     }
 
     async delete(id: string) : Promise<void>{

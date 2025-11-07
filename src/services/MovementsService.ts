@@ -52,12 +52,18 @@ export class MovementsService {
         return movements
     }
 
-    async addMovement(data: Partial<IMovements>): Promise<IMovements>{
+    async addMovement(userId: string, data: Partial<IMovements>): Promise<IMovements>{
         if (data.amount! < 0) throw new Error("El monto debe ser mayor a 0")
         
         if (!data.amount || !data.description || !data.date || !data.type) throw new Error('Deben existir todos los campos')
+
+        const existUser = await this.userRepository.findById(userId)
+        if (!existUser) throw new Error('Usuario no encontrado')
         
-        return this.moventsRepository.create(data)
+        const newMovent = await this.moventsRepository.create(data)
+
+        await this.userRepository.addMoventToUSer(userId, newMovent._id)
+        return newMovent
     }
 
     async updateMovement(data: Partial<IMovements>, id: string) : Promise<IMovements | null>{
