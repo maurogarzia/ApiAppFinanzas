@@ -14,6 +14,6 @@ route.post('/:userId', verifyToken, MovementController.create)
 route.get('/', verifyToken, MovementController.getAll)
 route.get('/:id', verifyToken, MovementController.getById)
 route.put('/:id', verifyToken, MovementController.update)
-route.delete('/:id', verifyToken, MovementController.delete)
+route.delete('/:userId/movement/:id', verifyToken, MovementController.delete)
 
 export default route

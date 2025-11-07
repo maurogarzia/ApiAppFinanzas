@@ -1,4 +1,5 @@
 import { Movement } from "@/models/Movements";
+import { User } from "@/models/Users";
 import { MoventsRepository } from "@/repositories/MovementsRepository";
 import { UserRepository } from "@/repositories/UserRepository";
 import { IMovements } from "@/types/IMovements";
@@ -69,7 +70,7 @@ export class MovementsService {
     async updateMovement(data: Partial<IMovements>, id: string) : Promise<IMovements | null>{
         if (data.amount! < 0) throw new Error("El monto debe ser mayor a 0")
         
-        if (!data.amount || !data.description || !data.date || !data.type) throw new Error('Deben existir todos los campos')
+        // if (!data.amount || !data.description || !data.date || !data.type) throw new Error('Deben existir todos los campos')
 
         const existMovement = await this.moventsRepository.update(id, data)
         if (!existMovement) throw new Error(`No se encontró el movimiento con id: ${id}`)
@@ -77,8 +78,12 @@ export class MovementsService {
         return existMovement
     }
 
-    async deleteMovement(id: string): Promise<void>{
+    async deleteMovement(id: string, userId: string): Promise<void>{
         const existMovementAndDelete = await this.moventsRepository.delete(id)
         if (existMovementAndDelete === null) throw new Error(`No se encontró el movimiento con id: ${id}`)
+
+        await User.findByIdAndUpdate(userId, {
+            $pull: {movements: id}
+        })
     }
 }
