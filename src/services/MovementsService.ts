@@ -1,11 +1,11 @@
 import { Movement } from "@/models/Movements";
 import { User } from "@/models/Users";
-import { MoventsRepository } from "@/repositories/MovementsRepository";
+import { MovementsRepository } from "@/repositories/MovementsRepository";
 import { UserRepository } from "@/repositories/UserRepository";
 import { IMovements } from "@/types/IMovements";
 
 export class MovementsService {
-    private moventsRepository = new MoventsRepository()
+    private moventsRepository = new MovementsRepository()
     private userRepository = new UserRepository()
 
     async getAllMovements() : Promise<IMovements[]>{

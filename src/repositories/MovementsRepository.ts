@@ -3,7 +3,7 @@ import { User } from "@/models/Users";
 import { IMovements } from "@/types/IMovements";
 import { UserRepository } from "./UserRepository";
 
-export class MoventsRepository {
+export class MovementsRepository {
     
     userRespository = new UserRepository()
 

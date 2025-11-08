@@ -25,10 +25,6 @@ export class UserRepository{
         return newUser.save()
     }
 
-    async update(data: IUsers, id: string) : Promise<IUsers | null>{
-        return User.findByIdAndUpdate(id, data, {new: true})
-    }
-
     async addMoventToUSer(userId : string, movementId: Types.ObjectId){
         await User.findByIdAndUpdate(userId, {
             $push: {movements: movementId}
@@ -36,6 +32,6 @@ export class UserRepository{
     }
 
     async delete(id: string) : Promise<void>{
-        User.findByIdAndDelete(id)
+        await User.findByIdAndDelete(id)
     }
 }
