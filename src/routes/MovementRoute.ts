@@ -10,7 +10,7 @@ route.get('/:userId/ancents', verifyToken, MovementController.getByMoreAncent)
 route.get('/:userId/type/:type', verifyToken, MovementController.getByType)
 
 
-route.post('/:userId', verifyToken, MovementController.create)
+route.post('/', verifyToken, MovementController.create)
 route.get('/', verifyToken, MovementController.getAll)
 route.get('/:id', verifyToken, MovementController.getById)
 route.put('/:id', verifyToken, MovementController.update)

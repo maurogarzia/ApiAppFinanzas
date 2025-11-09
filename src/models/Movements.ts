@@ -4,7 +4,7 @@ import { Schema } from "mongoose";
 
 const movementsSchema = new Schema<IMovements>({
     date: {
-        type: String,
+        type: Date,
         required: true
     },
     description: {
@@ -19,6 +19,10 @@ const movementsSchema = new Schema<IMovements>({
     amount: {
         type: Number,
         required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 },{
     timestamps: true, // Crea los campos de createdAt y updatedAt

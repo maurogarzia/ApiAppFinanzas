@@ -31,7 +31,7 @@ export class MovementController {
 
     static async getByMoreAncent (req: Request, res: Response) {
         try {
-            const data = await movementsService.getMoreAncent(req.params.id)
+            const data = await movementsService.getMoreAncent(req.params.userId)
             res.status(200).json(data)
         } catch (error: any) {
             const status = error.message.includes('no encontrado') ? 404 : 400
@@ -41,7 +41,7 @@ export class MovementController {
 
     static async getByMoreRecent(req: Request, res: Response) {
         try {
-            const data = await movementsService.getMoreRecent(req.params.id)
+            const data = await movementsService.getMoreRecent(req.params.userId)
             res.status(200).json(data)
         } catch (error: any) {
             const status = error.message.includes('no encontrado') ? 404 : 400
@@ -51,9 +51,7 @@ export class MovementController {
 
     static async create(req: Request, res: Response){
         try {
-            const {userId: userId} = req.params
-            const newMovements = await movementsService.addMovement(userId, req.body)
-            
+            const newMovements = await movementsService.addMovement(req.body)
             res.status(201).json(newMovements)
         } catch (error : any) {
             res.status(400).json({message : error.message})
