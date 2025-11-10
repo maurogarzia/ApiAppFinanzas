@@ -9,5 +9,6 @@ export interface IUsers extends Document{
     googleId: string,
     avatar: string
     provider: 'local' | 'google',
-    movements: IMovements[]
+    movements: IMovements[],
+    role: 'user' | 'admin'
 }

@@ -14,7 +14,9 @@ export class AuthController {
         try {
             const user = req.user as any
             const token = generateJwtToken(user)
-            res.json({message: 'Login con google exitoso', user, token})
+            
+            const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+            res.redirect(`${FRONTEND_URL}/auth/callback?token=${token}`);
         } catch (error : any) {
             res.status(500).json({messgae: error.message})
         }

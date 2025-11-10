@@ -27,7 +27,12 @@ const usersSchema = new Schema<IUsers>({
     movements: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Movement'
-    }]
+    }],
+    role: {
+        type : String,
+        enum: ['user', 'admin'],
+        default: 'user'
+    }
 },{
     timestamps: true,
     toJSON: {
