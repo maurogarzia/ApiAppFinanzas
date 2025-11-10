@@ -70,7 +70,7 @@ export class MovementController {
 
     static async delete(req: Request, res: Response){
         try {
-            await movementsService.deleteMovement(req.params.id, req.params.userId)
+            await movementsService.deleteMovement(req.params.id)
             res.json('Movimiento eliminado')
         } catch (error : any) {
             res.status(400).json({message: error.message})

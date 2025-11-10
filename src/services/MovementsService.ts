@@ -5,15 +5,15 @@ import { UserRepository } from "@/repositories/UserRepository";
 import { IMovements } from "@/types/IMovements";
 
 export class MovementsService {
-    private moventsRepository = new MovementsRepository()
+    private movementsRepository = new MovementsRepository()
     private userRepository = new UserRepository()
 
     async getAllMovements() : Promise<IMovements[]>{
-        return this.moventsRepository.findAll()
+        return this.movementsRepository.findAll()
     }
 
     async getById(id: string): Promise<IMovements | null>{
-        const existMovement = await this.moventsRepository.findById(id)
+        const existMovement = await this.movementsRepository.findById(id)
         if (!existMovement){
             throw new Error(`No se encontró el movimiento con id: ${id}`)
         }
@@ -27,7 +27,7 @@ export class MovementsService {
         const existUser = await this.userRepository.findById(userId)
         if (!existUser) throw new Error('Usuario no encontrado')
 
-        const movements = await this.moventsRepository.findByType(userId, type)
+        const movements = await this.movementsRepository.findByType(userId, type)
 
         if (!movements || movements.length === 0) throw new Error('No se encontraron movimientos')
         return movements
@@ -37,7 +37,7 @@ export class MovementsService {
         const existUser = await this.userRepository.findById(userId)
         if (!existUser) throw new Error('Usuario no encontrado')
 
-        const movements = await this.moventsRepository.findByMoreRecent(userId)
+        const movements = await this.movementsRepository.findByMoreRecent(userId)
         if (!movements || movements.length === 0) throw new Error('No se encontraron movimientos')
 
         return movements
@@ -47,7 +47,7 @@ export class MovementsService {
         const existUser = await this.userRepository.findById(userId)
         if (!existUser) throw new Error('Usuario no encontrado')
 
-        const movements = await this.moventsRepository.findByMoreAncent(userId)
+        const movements = await this.movementsRepository.findByMoreAncent(userId)
         if (!movements || movements.length === 0) throw new Error('No se encontraron movimientos')
 
         return movements
@@ -61,7 +61,7 @@ export class MovementsService {
         const existUser = await this.userRepository.findById(String(data.user))
         if (!existUser) throw new Error('Usuario no encontrado')
         
-        const newMovent = await this.moventsRepository.create(data)
+        const newMovent = await this.movementsRepository.create(data)
 
         await this.userRepository.addMoventToUSer(String(data.user), newMovent._id)
         return newMovent
@@ -72,18 +72,22 @@ export class MovementsService {
         
         // if (!data.amount || !data.description || !data.date || !data.type) throw new Error('Deben existir todos los campos')
 
-        const existMovement = await this.moventsRepository.update(id, data)
+        const existMovement = await this.movementsRepository.update(id, data)
         if (!existMovement) throw new Error(`No se encontró el movimiento con id: ${id}`)
         
         return existMovement
     }
 
-    async deleteMovement(id: string, userId: string): Promise<void>{
-        const existMovementAndDelete = await this.moventsRepository.delete(id)
-        if (existMovementAndDelete === null) throw new Error(`No se encontró el movimiento con id: ${id}`)
+    async deleteMovement(id: string): Promise<void>{
+        const existMovement = await this.movementsRepository.findById(id)
 
-        await User.findByIdAndUpdate(userId, {
+        if (!existMovement) throw new Error(`No se encontró el movimiento con id: ${id}`)
+        
+        
+        await User.findByIdAndUpdate(existMovement.user, {
             $pull: {movements: id}
         })
+
+        await this.movementsRepository.delete(id)
     }
 }
