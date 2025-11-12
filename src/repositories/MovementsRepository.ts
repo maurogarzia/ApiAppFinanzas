@@ -33,6 +33,18 @@ export class MovementsRepository {
         return Movement.find({user: userId})
     }
 
+    // Traigo los movimientos del usuario pero del mes actual
+    async findMovementsOfCurrentMonth(userId: string): Promise<IMovements[]> {
+        const now = new Date();
+        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1); // Primer dia del mes
+        const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999); // Ultimo dia del mes
+
+        return Movement.find({
+            user: userId,
+            date: { $gte: startOfMonth, $lte: endOfMonth },
+        });
+    }
+
     // Filtro por tipo
     async findByType(userId : string, type: string) : Promise<IMovements[] | null> {
         return Movement.find({user: userId, type}).sort({date: -1})
