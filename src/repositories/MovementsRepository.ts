@@ -47,16 +47,36 @@ export class MovementsRepository {
 
     // Filtro por tipo
     async findByType(userId : string, type: string) : Promise<IMovements[] | null> {
-        return Movement.find({user: userId, type}).sort({date: -1})
+        const now = new Date();
+        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1); // Primer dia del mes
+        const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999); // Ultimo dia del mes
+        return Movement.find({
+            user: userId, 
+            type,
+            date: { $gte: startOfMonth, $lte: endOfMonth }
+        }).sort({date: -1})
     }
 
     // Filtro por fecha mas reciente
     async findByMoreRecent(userId: string) : Promise<IMovements[] | null>{
-        return Movement.find({user: userId}).sort({date: -1})
+        const now = new Date();
+        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1); // Primer dia del mes
+        const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999); // Ultimo dia del mes
+        return Movement.find({
+            user: userId,
+            date: { $gte: startOfMonth, $lte: endOfMonth }
+        }).sort({date: -1})
     }
 
     // Filtro por fecha mas antigua
     async findByMoreAncent(userId: string) : Promise<IMovements[] | null>{
-        return Movement.find({user: userId}).sort({date: 1})
+        const now = new Date();
+        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1); // Primer dia del mes
+        const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999); // Ultimo dia del mes
+
+        return Movement.find({
+            user: userId,
+            date: { $gte: startOfMonth, $lte: endOfMonth }
+        }).sort({date: 1})
     }
 }
