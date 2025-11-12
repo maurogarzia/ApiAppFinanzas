@@ -37,7 +37,7 @@ export class MovementsService {
 
         const movements = await this.movementsRepository.findByType(userId, type)
 
-        if (!movements || movements.length === 0) throw new Error('No se encontraron movimientos')
+        if (!movements) throw new Error('No se encontraron movimientos')
         return movements
     }
 
@@ -46,7 +46,7 @@ export class MovementsService {
         if (!existUser) throw new Error('Usuario no encontrado')
 
         const movements = await this.movementsRepository.findByMoreRecent(userId)
-        if (!movements || movements.length === 0) throw new Error('No se encontraron movimientos')
+        if (!movements ) throw new Error('No se encontraron movimientos')
 
         return movements
     }
@@ -56,7 +56,7 @@ export class MovementsService {
         if (!existUser) throw new Error('Usuario no encontrado')
 
         const movements = await this.movementsRepository.findByMoreAncent(userId)
-        if (!movements || movements.length === 0) throw new Error('No se encontraron movimientos')
+        if (!movements) throw new Error('No se encontraron movimientos')
 
         return movements
     }
