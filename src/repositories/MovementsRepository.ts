@@ -28,6 +28,11 @@ export class MovementsRepository {
         await Movement.findByIdAndDelete(id)
     }
 
+    // Traigo los movimientos del usuario
+    async findMovementsByUser(userId: string) : Promise<IMovements[] | null>{
+        return Movement.find({user: userId})
+    }
+
     // Filtro por tipo
     async findByType(userId : string, type: string) : Promise<IMovements[] | null> {
         return Movement.find({user: userId, type}).sort({date: -1})

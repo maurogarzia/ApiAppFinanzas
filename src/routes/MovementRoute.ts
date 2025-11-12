@@ -8,7 +8,7 @@ const route = Router()
 route.get('/:userId/recents', verifyToken, MovementController.getByMoreRecent)
 route.get('/:userId/ancents', verifyToken, MovementController.getByMoreAncent)
 route.get('/:userId/type/:type', verifyToken, MovementController.getByType)
-
+route.get('/me', verifyToken, MovementController.getByUser)
 
 route.post('/', verifyToken, MovementController.create)
 route.get('/', verifyToken, MovementController.getAll)

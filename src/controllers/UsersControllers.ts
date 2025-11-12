@@ -18,6 +18,16 @@ export class UsersControllers {
         }
     }
 
+    static async getUserLogged(req: any, res: Response) {
+        try {
+            const userId = req.user.id
+            const data = await usersService.getById(userId)
+            res.status(200).json(data)
+        } catch (error: any) {
+            res.status(400).json({message : error.message})
+        }
+    }
+
     static async delete(req: Request, res: Response){
         try {
             await usersService.delete(req.params.id)

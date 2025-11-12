@@ -20,6 +20,10 @@ export class MovementsService {
         return existMovement
     }
 
+    async getMovementsByUserId(userId: string) : Promise<IMovements[] | null> {
+        return this.movementsRepository.findMovementsByUser(userId)
+    }
+
     async getByType(userId: string, type: string) : Promise<IMovements[] | null>{
 
         if (type !== 'expense' && type !== 'income') throw new Error('El tipo de movimiento es incorrecto')

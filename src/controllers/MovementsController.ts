@@ -19,6 +19,16 @@ export class MovementController {
         }
     }
 
+    static async getByUser(req: Request, res: Response) {
+        try {
+            const userId = (req as any).user.id
+            const data = await movementsService.getMovementsByUserId(userId)
+            res.status(200).json(data)
+        } catch (error: any) {
+            res.status(500).json({message : error.message})
+        }
+    }
+
     static async getByType(req: Request, res: Response) {
         try {
             const data = await movementsService.getByType(req.params.id, req.params.type)
