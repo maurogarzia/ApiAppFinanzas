@@ -8,5 +8,5 @@ export interface IMovements extends Document{
     description: string,
     type: "income" | "expense",
     amount: number,
-    user: IUsers
+    user: Types.ObjectId
 }

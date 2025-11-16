@@ -18,12 +18,16 @@ export class AuthController {
             const token = generateJwtToken(user)
             console.log('token', token);
             
+            res.status(200).json({
+                user, 
+                token
+            })
             
-            const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
-            const redirectUrl = `${FRONTEND_URL}/auth/callback?token=${token}`
-            console.log('Redirigiendo a: ', redirectUrl);
+            // const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+            // const redirectUrl = `${FRONTEND_URL}/auth/callback?token=${token}`
+            // console.log('Redirigiendo a: ', redirectUrl);
             
-            res.redirect(redirectUrl);
+            // res.redirect(redirectUrl);
             
             
         } catch (error : any) {
