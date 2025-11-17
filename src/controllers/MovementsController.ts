@@ -72,6 +72,17 @@ export class MovementController {
         }
     }
 
+    static async getByDate(req: Request, res: Response) {
+        try {
+            const userId = (req as any).user.id
+            const data = await movementsService.getByDate(userId, Number(req.params.year), Number(req.params.month))
+            return res.status(200).json(data)
+        } catch (error : any) {
+            const status = error.message.includes('no encontrado') ? 404 : 400
+            res.status(status).json({message: error.message})
+        }
+    }
+
     static async create(req: Request, res: Response){
         try {
             const userId = (req as any).user.id

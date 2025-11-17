@@ -79,4 +79,16 @@ export class MovementsRepository {
             date: { $gte: startOfMonth, $lte: endOfMonth }
         }).sort({date: 1})
     }
+    
+    async findByDate(userId: string, year: number,  month: number) : Promise<IMovements[] | null>{
+
+        const jsMonth = month - 1
+
+        const startOfMonth = new Date(year, jsMonth, 1) // Primer dia del mes
+        const endOfMonth = new Date(year, jsMonth + 1, 0, 23, 59, 59, 999) // Ultimo dia del mes
+        return Movement.find({
+            user: userId,
+            date: { $gte: startOfMonth, $lte: endOfMonth }
+        }).sort({date: 1})
+    }
 }

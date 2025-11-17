@@ -20,6 +20,13 @@ export class MovementsService {
         return existMovement
     }
 
+    async getByDate(userId: string, year: number, month: number) : Promise<IMovements[] | null>{
+        const exitsUser = await this.userRepository.findById(userId)
+        if (!exitsUser) throw Error(`No se encontró el usuario`)
+            
+        return this.movementsRepository.findByDate(userId, year, month)
+    }
+
     async getMovementsByUserId(userId: string) : Promise<IMovements[] | null> {
         return this.movementsRepository.findMovementsByUser(userId)
     }

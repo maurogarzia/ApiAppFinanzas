@@ -10,6 +10,7 @@ route.get('/ancents', verifyToken, MovementController.getByMoreAncent)
 route.get('/type/:type', verifyToken, MovementController.getByType)
 route.get('/me', verifyToken, MovementController.getByUser)
 route.get('/me/ofTheMonth', verifyToken, MovementController.getMovementsOfTheMonth)
+route.get('/me/year/:year/month/:month', verifyToken, MovementController.getByDate)
 
 route.post('/', verifyToken, MovementController.create)
 route.get('/', verifyToken, MovementController.getAll)
