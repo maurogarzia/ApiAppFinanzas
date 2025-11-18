@@ -80,6 +80,7 @@ export class MovementsRepository {
         }).sort({date: 1})
     }
     
+    // Filtro por fecha
     async findByDate(userId: string, year: number,  month: number) : Promise<IMovements[] | null>{
 
         const jsMonth = month - 1
