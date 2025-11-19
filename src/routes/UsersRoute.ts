@@ -1,5 +1,5 @@
-import { UsersControllers } from "@/controllers/UsersControllers";
-import { verifyAdmin, verifyToken } from "@/services/AuthService";
+import { UsersControllers } from "../controllers/UsersControllers";
+import { verifyAdmin, verifyToken } from "../services/AuthService";
 import { Router } from "express";
 
 

@@ -1,5 +1,5 @@
-import { MovementController } from '@/controllers/MovementsController'
-import { verifyToken } from '@/services/AuthService'
+import { MovementController } from '../controllers/MovementsController'
+import { verifyToken } from '../services/AuthService'
 import { Router } from 'express'
 
 const route = Router()

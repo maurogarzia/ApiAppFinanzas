@@ -1,8 +1,8 @@
-import { Movement } from "@/models/Movements";
-import { User } from "@/models/Users";
-import { MovementsRepository } from "@/repositories/MovementsRepository";
-import { UserRepository } from "@/repositories/UserRepository";
-import { IMovements } from "@/types/IMovements";
+
+import { User } from "../models/Users";
+import { MovementsRepository } from "../repositories/MovementsRepository";
+import { UserRepository } from "../repositories/UserRepository";
+import { IMovements } from "../types/IMovements";
 
 export class MovementsService {
     private movementsRepository = new MovementsRepository()

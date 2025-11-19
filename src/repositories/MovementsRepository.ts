@@ -1,6 +1,5 @@
-import { Movement } from "@/models/Movements";
-import { User } from "@/models/Users";
-import { IMovements } from "@/types/IMovements";
+import { Movement } from "../models/Movements";
+import { IMovements } from "../types/IMovements";
 import { UserRepository } from "./UserRepository";
 
 export class MovementsRepository {

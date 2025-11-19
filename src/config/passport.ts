@@ -1,7 +1,8 @@
-import { User } from "@/models/Users";
-import { UserRepository } from "@/repositories/UserRepository";
+
+import { UserRepository } from "../repositories/UserRepository";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import passport from "passport";
+import { User } from "../models/Users";
 
 //-------------------------------------------------------------------------------------------------------------------
 // Este archivo configura la estrategia de OAuth2 con google

@@ -1,6 +1,5 @@
-import { User } from "@/models/Users";
-import { IUsers } from "@/types/IUsers";
-
+import { User } from "../models/Users";
+import { IUsers } from "../types/IUsers";
 import { Types } from "mongoose";
 
 export class UserRepository{

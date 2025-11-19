@@ -1,4 +1,4 @@
-import { MovementsService } from "@/services/MovementsService"
+import { MovementsService } from "../services/MovementsService"
 import { log } from "console"
 import {Request, Response} from 'express'
 

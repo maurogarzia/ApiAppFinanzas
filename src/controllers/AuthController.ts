@@ -1,6 +1,6 @@
 import {Request, Response} from 'express'
-import {generateJwtToken} from '@/services/AuthService'
-import { UserService } from '@/services/UserService'
+import {generateJwtToken} from '../services/AuthService'
+
 
 //-------------------------------------------------------------------------------------------------------------------
 // Expone el metodo callback de google

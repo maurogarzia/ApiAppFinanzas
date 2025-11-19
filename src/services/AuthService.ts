@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { IUsers } from "@/types/IUsers";
+import { IUsers } from "../types/IUsers";
 import { NextFunction } from "express";
 
 //-------------------------------------------------------------------------------------------------------------------

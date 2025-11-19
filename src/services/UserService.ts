@@ -1,9 +1,6 @@
-import { UserRepository } from "@/repositories/UserRepository";
-import { IUsers } from "@/types/IUsers";
-import bcrypt from 'bcrypt'
-import { generateJwtToken } from "./AuthService";
-import { Movement } from "@/models/Movements";
-import { MovementsRepository } from "@/repositories/MovementsRepository";
+import { UserRepository } from "../repositories/UserRepository";
+import { IUsers } from "../types/IUsers";
+import { MovementsRepository } from "../repositories/MovementsRepository";
 
 
 export class UserService {

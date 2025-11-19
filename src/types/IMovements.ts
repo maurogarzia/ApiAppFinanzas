@@ -1,5 +1,5 @@
 import { Types } from "mongoose"
-import { IUsers } from "./IUsers"
+
 
 export interface IMovements extends Document{
     _id: Types.ObjectId // Id real de mongo

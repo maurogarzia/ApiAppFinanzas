@@ -1,5 +1,5 @@
 
-import { AuthController } from "@/controllers/AuthController";
+import { AuthController } from "../controllers/AuthController";
 import { Router } from "express";
 import passport from "passport";
 

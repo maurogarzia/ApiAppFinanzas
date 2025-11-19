@@ -1,4 +1,4 @@
-import { IMovements } from "@/types/IMovements";
+import { IMovements } from "../types/IMovements";
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
