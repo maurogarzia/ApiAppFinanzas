@@ -23,8 +23,5 @@ app.use('/appFinance/auth', authRoutes)
 app.use('/appFinance/movements', movementsRoutes)
 app.use('/appFinance/users', usersRoutes)
 
-const port = process.env.PORT || 4000
 
-app.listen(port, () => {
-    console.log(`Servidor corriendo en el puerto ${port}`);
-})
+export default app
