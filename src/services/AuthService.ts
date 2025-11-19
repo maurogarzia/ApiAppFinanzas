@@ -1,11 +1,13 @@
 import jwt from "jsonwebtoken";
 import { IUsers } from "../types/IUsers";
 import { NextFunction } from "express";
+import { OAuth2Client } from "google-auth-library";
 
 //-------------------------------------------------------------------------------------------------------------------
 // Este archivo contiene la funcion que genera el jwt firmado con JWT_SECRET para identificar al usuaio en la api 
 //-------------------------------------------------------------------------------------------------------------------
 
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // Creo cliente de google
 
 export const generateJwtToken = (user: IUsers) => {
   return jwt.sign(
@@ -20,6 +22,16 @@ export const generateJwtToken = (user: IUsers) => {
   );
 };
 
+//Verifica el token enviado por google desde el front
+export const verifyGoogleToken = async(token: string) => {
+  const ticket = await client.verifyIdToken({
+    idToken: token,
+    audience: process.env.GOOGLE_CLIENT_ID,
+  })
+  return ticket.getPayload()
+}
+
+// Middleware para validar JWT propio
 export const verifyToken = (req: any, res: any, next: any) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) return res.status(401).json({ message: "Token requerido" });

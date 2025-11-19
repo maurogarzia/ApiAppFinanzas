@@ -3,10 +3,6 @@ import movementsRoutes from '../src/routes/MovementRoute'
 import usersRoutes from '../src/routes/UsersRoute'
 import authRoutes from '../src/routes/AuthRouter'
 
-
-import './config/passport'
-
-
 app.use('/appFinance/auth', authRoutes)
 app.use('/appFinance/movements', movementsRoutes)
 app.use('/appFinance/users', usersRoutes)
