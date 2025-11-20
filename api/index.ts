@@ -5,4 +5,4 @@ import { connectDB } from "../src/config/db";
 // Ejecuta conexión antes de handling requests
 connectDB();
 
-module.exports = serverless(app);
+export default serverless(app);
