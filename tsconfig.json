@@ -15,7 +15,7 @@
       "consfig/*": ["consfig/*"]
     },
     "rootDir": "./src",
-    "outDir": "./dist",
+    "outDir": "./api",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
