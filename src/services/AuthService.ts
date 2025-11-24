@@ -22,14 +22,6 @@ export const generateJwtToken = (user: IUsers) => {
   );
 };
 
-//Verifica el token enviado por google desde el front
-export const verifyGoogleToken = async(token: string) => {
-  const ticket = await client.verifyIdToken({
-    idToken: token,
-    audience: process.env.GOOGLE_CLIENT_ID,
-  })
-  return ticket.getPayload()
-}
 
 // Middleware para validar JWT propio
 export const verifyToken = (req: any, res: any, next: any) => {
