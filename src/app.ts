@@ -5,7 +5,7 @@ import authRoutes from './routes/AuthRouter'
 import mongoose from "mongoose";
 
 
-mongoose.connect(process.env.MONGO_UR!)
+mongoose.connect(process.env.MONGO_URL!)
 
 import passport from "./config/passport";
 
