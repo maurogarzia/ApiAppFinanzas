@@ -5,7 +5,7 @@ import authRoutes from '../src/routes/AuthRouter'
 import mongoose from "mongoose";
 
 
-mongoose.connect('mongodb://localhost:27017/AppFinance')
+mongoose.connect(process.env.MONGO_UR!)
 
 import passport from "./config/passport";
 
