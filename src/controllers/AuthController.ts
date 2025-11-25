@@ -21,10 +21,13 @@ export class AuthController {
     
             const token = generateJwtToken(user)
     
-            return res.status(200).json({
-                user, 
-                token
-            })
+            // return res.status(200).json({
+            //     user, 
+            //     token
+            // })
+
+            // Mando el token al front
+            return res.redirect(`http://localhost:5173/login-success?token=${token}`);
             
         }catch(error : any){
             res.status(500).json(error.message)

@@ -1,4 +1,4 @@
-import { User } from "@/models/Users";
+import { User } from "../models/Users";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 
@@ -7,7 +7,7 @@ passport.use(
         {
             clientID : process.env.GOOGLE_CLIENT_ID!,
             clientSecret : process.env.GOOGLE_CLIENT_SECRET!,
-            callbackURL: "/appFinance/auth/google/callback",
+            callbackURL: process.env.GOOGLE_URL_CALLBACK,
         },
         async (_accessToken: any, _refreshToken: any, profile: any, done: any) => {
             try {

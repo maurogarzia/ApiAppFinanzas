@@ -1,13 +1,11 @@
 import jwt from "jsonwebtoken";
 import { IUsers } from "../types/IUsers";
 import { NextFunction } from "express";
-import { OAuth2Client } from "google-auth-library";
+
 
 //-------------------------------------------------------------------------------------------------------------------
 // Este archivo contiene la funcion que genera el jwt firmado con JWT_SECRET para identificar al usuaio en la api 
 //-------------------------------------------------------------------------------------------------------------------
-
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // Creo cliente de google
 
 export const generateJwtToken = (user: IUsers) => {
   return jwt.sign(
@@ -15,7 +13,8 @@ export const generateJwtToken = (user: IUsers) => {
       id: user._id,
       email: user.email,
       provider: user.provider,
-      role: user.role
+      role: user.role,
+      avatar: user.avatar
     },
     process.env.JWT_SECRET!,
     { expiresIn: "7d" }
