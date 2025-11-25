@@ -1,7 +1,7 @@
 import app from "./server/server";
-import movementsRoutes from '../src/routes/MovementRoute'
-import usersRoutes from '../src/routes/UsersRoute'
-import authRoutes from '../src/routes/AuthRouter'
+import movementsRoutes from './routes/MovementRoute'
+import usersRoutes from './routes/UsersRoute'
+import authRoutes from './routes/AuthRouter'
 import mongoose from "mongoose";
 
 
