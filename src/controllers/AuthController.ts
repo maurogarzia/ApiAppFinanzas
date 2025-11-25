@@ -27,7 +27,7 @@ export class AuthController {
             // })
 
             // Mando el token al front
-            return res.redirect(`http://localhost:5173/login-success?token=${token}`);
+            return res.redirect(`${process.env.FONTEND_URL}/login-success?token=${token}`);
             
         }catch(error : any){
             res.status(500).json(error.message)
