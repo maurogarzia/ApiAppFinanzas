@@ -8,6 +8,6 @@ const route = Router()
 route.get('/',verifyToken, verifyAdmin, UsersControllers.getAll)
 route.get('/me', verifyToken, UsersControllers.getUserLogged)
 route.get('/:id',verifyToken, UsersControllers.getById)
-route.delete('/:id', UsersControllers.delete)
+route.delete('/:id',verifyToken, verifyAdmin, UsersControllers.delete)
 
 export default route
