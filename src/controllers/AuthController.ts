@@ -1,7 +1,7 @@
 import {Response} from 'express'
 import {generateJwtToken} from '../services/AuthService'
 import { OAuth2Client } from 'google-auth-library';
-import { User } from '@/models/Users';
+import { User } from '../models/Users';
 
 
 
